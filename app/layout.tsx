@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import "@picocss/pico";
 
 export default function RootLayout({
@@ -8,6 +9,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <nav className="container">
+          <Navbar />
+        </nav>
         <main className="container">{children}</main>
       </body>
     </html>
