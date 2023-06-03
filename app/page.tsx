@@ -1,7 +1,7 @@
-"use client";
-
-import { H1 } from "@blueprintjs/core";
+export const metadata = {
+  title: "Hello World",
+};
 
 export default function Home() {
-  return <H1>hello, world</H1>;
+  return <h1>hello, world</h1>;
 }
