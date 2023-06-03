@@ -1,6 +1,4 @@
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import "@picocss/pico";
 
 export default function RootLayout({
   children,
@@ -9,8 +7,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main>{children}</main>
+      <body>
+        <main className="container">{children}</main>
       </body>
     </html>
   );
