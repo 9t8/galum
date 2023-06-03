@@ -8,7 +8,7 @@ export default function Navbar() {
       </ul>
       <ul>
         <li>
-          <a>About</a>
+          <a>Alumni List</a>
         </li>
       </ul>
       <ul>
