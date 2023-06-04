@@ -5,22 +5,22 @@ export default function Navbar() {
     <>
       <ul>
         <li>
-          <Link href="" className="contrast">
+          <a href="." className="contrast">
             Gunn Alumni
-          </Link>
+          </a>
         </li>
         <li>
-          <Link href="alums">List of Alumni</Link>
+          <a href="alums">List of Alumni</a>
         </li>
       </ul>
       <ul>
         <li>
-          <Link href="">Sign In</Link>
+          <a href=".">Sign In</a>
         </li>
         <li>
-          <Link href="" role="button">
+          <a href="." role="button">
             Sign Up
-          </Link>
+          </a>
         </li>
       </ul>
     </>
