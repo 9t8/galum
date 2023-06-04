@@ -2,21 +2,21 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSignUpEmailPassword } from "@nhost/nextjs";
+import { useSignInEmailPassword } from "@nhost/nextjs";
 
-export default function SignUp() {
+export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const router = useRouter();
 
   const {
-    signUpEmailPassword,
+    signInEmailPassword,
     isLoading,
     isSuccess,
     needsEmailVerification,
     error,
-  } = useSignUpEmailPassword();
+  } = useSignInEmailPassword();
 
   useEffect(() => {
     if (isSuccess) {
@@ -26,8 +26,7 @@ export default function SignUp() {
 
   const handleOnSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    await signUpEmailPassword(email, password);
+    await signInEmailPassword(email, password);
   };
 
   const disableForm = isLoading || needsEmailVerification;
@@ -46,7 +45,7 @@ export default function SignUp() {
       />
       <input
         type="password"
-        placeholder="Create password"
+        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         disabled={disableForm}
@@ -54,7 +53,7 @@ export default function SignUp() {
       />
 
       <button type="submit" disabled={disableForm}>
-        {isLoading ? <progress /> : "Create account"}
+        {isLoading ? <progress /> : "Sign in"}
       </button>
 
       {error && <p>{error.message}</p>}

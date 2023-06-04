@@ -1,6 +1,8 @@
-import { SignedIn, SignedOut } from "@nhost/nextjs";
+import { SignedIn, SignedOut, useSignOut } from "@nhost/nextjs";
 
 export default function Navbar() {
+  const { signOut } = useSignOut();
+
   return (
     <nav className="container">
       <ul>
@@ -18,7 +20,7 @@ export default function Navbar() {
       <ul>
         <SignedOut>
           <li>
-            <a href=".">Sign In</a>
+            <a href="sign-in">Sign In</a>
           </li>
           <li>
             <a href="sign-up" role="button">
@@ -33,7 +35,9 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href=".">Sign Out</a>
+            <a href="" onClick={signOut}>
+              Sign Out
+            </a>
           </li>
         </SignedIn>
       </ul>
