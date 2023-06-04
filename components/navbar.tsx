@@ -7,9 +7,7 @@ export default function Navbar() {
     <nav className="container">
       <ul>
         <li>
-          <a href=".">
-            <strong>Gunn Alumni</strong>
-          </a>
+          <a href=".">Gunn Alumni</a>
         </li>
         <li>
           <a href="alums" className="secondary">
