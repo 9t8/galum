@@ -7,12 +7,12 @@ import Navbar from "@/components/Navbar";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const nhost = new NhostClient({
-  subdomain: "qndsufruxlffqeirkxqm",
-  region: "us-east-1",
+  region: process.env.NEXT_PUBLIC_REGION,
+  subdomain: process.env.NEXT_PUBLIC_SUBDOMAIN,
 });
 
 const apollo = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_GRAPHQL_URI,
+  uri: nhost.graphql.httpUrl,
   cache: new InMemoryCache(),
 });
 
