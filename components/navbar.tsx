@@ -2,13 +2,15 @@ import { SignedIn, SignedOut } from "@nhost/nextjs";
 
 export default function Navbar() {
   return (
-    <>
+    <nav className="container">
       <ul>
         <li>
-          <a href="." className="contrast">
-            Gunn Alumni
+          <a href=".">
+            <strong>Gunn Alumni</strong>
           </a>
         </li>
+      </ul>
+      <ul>
         <li>
           <a href="alums">List of Alumni</a>
         </li>
@@ -19,20 +21,22 @@ export default function Navbar() {
             <a href=".">Sign In</a>
           </li>
           <li>
-            <a href="." role="button">
+            <a href="sign-up" role="button">
               Sign Up
             </a>
           </li>
         </SignedOut>
         <SignedIn>
           <li>
-            <a href=".">My Profile</a>
+            <a href="." role="button">
+              My Profile
+            </a>
           </li>
           <li>
             <a href=".">Sign Out</a>
           </li>
         </SignedIn>
       </ul>
-    </>
+    </nav>
   );
 }

@@ -26,9 +26,7 @@ export default function RootLayout({
       <body>
         <NhostProvider nhost={nhost}>
           <ApolloProvider client={apollo}>
-            <nav className="container">
-              <Navbar />
-            </nav>
+            <Navbar />
             <main className="container">{children}</main>
           </ApolloProvider>
         </NhostProvider>
