@@ -11,10 +11,10 @@ export default function Navbar() {
             <strong>Gunn Alumni</strong>
           </a>
         </li>
-      </ul>
-      <ul>
         <li>
-          <a href="alums">List of Alumni</a>
+          <a href="alums" className="secondary">
+            List of Alumni
+          </a>
         </li>
       </ul>
       <ul>
@@ -34,11 +34,7 @@ export default function Navbar() {
               My Profile
             </a>
           </li>
-          <li>
-            <a href="" onClick={signOut}>
-              Sign Out
-            </a>
-          </li>
+          <li onClick={signOut}>Sign Out</li>
         </SignedIn>
       </ul>
     </nav>
