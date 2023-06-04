@@ -1,7 +1,5 @@
-import TestButton from "@/components/TestButton";
-
 export const metadata = {
-  title: "Hello World",
+  title: "Gunn Alumni",
 };
 
 export default function Home() {
@@ -9,7 +7,6 @@ export default function Home() {
     <>
       <h1>Gunn Alumni Website</h1>
       <p>This is the Gunn Alumni website.</p>
-      <TestButton />
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import { NhostClient, NhostProvider } from "@nhost/nextjs";
+import { NhostApolloProvider } from "@nhost/react-apollo";
 import "@picocss/pico";
 
 const nhost = new NhostClient({
@@ -18,10 +19,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NhostProvider nhost={nhost}>
-          <nav className="container">
-            <Navbar />
-          </nav>
-          <main className="container">{children}</main>
+          <NhostApolloProvider nhost={nhost}>
+            <nav className="container">
+              <Navbar />
+            </nav>
+            <main className="container">{children}</main>
+          </NhostApolloProvider>
         </NhostProvider>
       </body>
     </html>
