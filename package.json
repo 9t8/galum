@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gql": "graphql-codegen"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.15",
+    "@graphql-codegen/cli": "^4.0.1",
     "@nhost/nextjs": "^1.13.26",
     "@nhost/react-apollo": "^5.0.24",
     "@picocss/pico": "^1.5.10",
