@@ -32,20 +32,22 @@ export default function AlumList() {
   );
 
   return alums ? (
-    alums.reduceRight(
-      (acc, year, i) => [
-        ...acc,
-        <details key={i}>
-          <summary>{i}</summary>
-          <ul>
-            {year.map((person, i) => (
-              <li key={i}>{person.first_name + " " + person.last_name}</li>
-            ))}
-          </ul>
-        </details>,
-      ],
-      [] as ReactElement[]
-    )
+    <>
+      {alums.reduceRight(
+        (acc, year, i) => [
+          ...acc,
+          <details key={i}>
+            <summary>{i}</summary>
+            <ul>
+              {year.map((person, i) => (
+                <li key={i}>{person.first_name + " " + person.last_name}</li>
+              ))}
+            </ul>
+          </details>,
+        ],
+        [] as ReactElement[]
+      )}
+    </>
   ) : (
     <progress />
   );
