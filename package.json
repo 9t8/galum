@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nhost/nextjs": "^1.13.26",
     "@picocss/pico": "^1.5.10",
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
