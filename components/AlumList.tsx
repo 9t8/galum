@@ -1,7 +1,7 @@
 "use client";
 
-import { gql, useQuery } from "@apollo/client";
-import { useMemo } from "react";
+import { useQuery } from "@apollo/client";
+import { ReactElement, useMemo } from "react";
 
 import { graphql } from "@/__generated__/gql";
 
@@ -24,27 +24,27 @@ export default function AlumList() {
   const alums = useMemo(
     () =>
       data &&
-      data.people.reduce((acc: any[], alum: any) => {
-        acc[alum.grad_year] = [...(acc[alum.grad_year] || []), alum];
+      data.people.reduce((acc, alum) => {
+        acc[alum.grad_year!] = [...(acc[alum.grad_year!] || []), alum];
         return acc;
-      }, []),
+      }, [] as (typeof data.people)[number][][]),
     [data]
   );
 
   return alums ? (
     alums.reduceRight(
-      (acc: any[], year: any[], i: number) => [
+      (acc, year, i) => [
         ...acc,
         <details key={i}>
           <summary>{i}</summary>
           <ul>
-            {year.map((person: any, i: number) => (
+            {year.map((person, i) => (
               <li key={i}>{person.first_name + " " + person.last_name}</li>
             ))}
           </ul>
         </details>,
       ],
-      []
+      [] as ReactElement[]
     )
   ) : (
     <progress />
