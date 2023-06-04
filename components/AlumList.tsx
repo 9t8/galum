@@ -3,8 +3,10 @@
 import { gql, useQuery } from "@apollo/client";
 import { useMemo } from "react";
 
-const QUERY = gql`
-  {
+import { graphql } from "@/__generated__/gql";
+
+const getAlums = graphql(`
+  query getAlums {
     people(
       where: { grad_year: { _is_null: false } }
       order_by: [{ last_name: asc }, { first_name: asc }]
@@ -14,10 +16,11 @@ const QUERY = gql`
       grad_year
     }
   }
-`;
+`);
 
 export default function AlumList() {
-  const { data } = useQuery(QUERY);
+  const { data } = useQuery(getAlums);
+
   const alums = useMemo(
     () =>
       data &&
@@ -27,8 +30,6 @@ export default function AlumList() {
       }, []),
     [data]
   );
-
-  console.log(alums);
 
   return alums ? (
     alums.reduceRight(

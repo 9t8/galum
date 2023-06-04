@@ -1,13 +1,19 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
 import { NhostClient, NhostProvider } from "@nhost/nextjs";
-import { NhostApolloProvider } from "@nhost/react-apollo";
 import "@picocss/pico";
+
+import Navbar from "@/components/Navbar";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const nhost = new NhostClient({
   subdomain: "qndsufruxlffqeirkxqm",
   region: "us-east-1",
+});
+
+const apollo = new ApolloClient({
+  uri: process.env.NEXT_PUBLIC_GRAPHQL_URI,
+  cache: new InMemoryCache(),
 });
 
 export default function RootLayout({
@@ -19,12 +25,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NhostProvider nhost={nhost}>
-          <NhostApolloProvider nhost={nhost}>
+          <ApolloProvider client={apollo}>
             <nav className="container">
               <Navbar />
             </nav>
             <main className="container">{children}</main>
-          </NhostApolloProvider>
+          </ApolloProvider>
         </NhostProvider>
       </body>
     </html>
