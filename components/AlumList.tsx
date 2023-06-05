@@ -5,8 +5,8 @@ import { ReactElement, useMemo } from "react";
 
 import { graphql } from "@/__generated__/gql";
 
-const getAlums = graphql(`
-  query getAlums {
+const selectAlums = graphql(`
+  query selectAlums {
     people(
       where: { grad_year: { _is_null: false } }
       order_by: [{ last_name: asc }, { first_name: asc }]
@@ -19,7 +19,7 @@ const getAlums = graphql(`
 `);
 
 export default function AlumList() {
-  const { data } = useQuery(getAlums);
+  const { data } = useQuery(selectAlums);
 
   const alums = useMemo(
     () =>
