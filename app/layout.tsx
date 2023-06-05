@@ -7,8 +7,8 @@ import Navbar from "@/components/Navbar";
 import { NhostApolloProvider } from "@nhost/react-apollo";
 
 const nhost = new NhostClient({
-  region: process.env.NEXT_PUBLIC_REGION,
-  subdomain: process.env.NEXT_PUBLIC_SUBDOMAIN,
+  region: "us-east-1",
+  subdomain: "qndsufruxlffqeirkxqm",
 });
 
 export default function RootLayout({
