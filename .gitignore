@@ -36,3 +36,4 @@ next-env.d.ts
 
 # codegen
 __generated__
+.env
