@@ -15,14 +15,26 @@ const upsertProfile = graphql(`
   }
 `);
 
+const upsertProfile2 = graphql(`
+  mutation upsertProfile2($bio: String!) {
+    insert_profiles(
+      objects: { bio: $bio }
+      on_conflict: { constraint: profiles_pkey, update_columns: [bio] }
+    ) {
+      affected_rows
+    }
+  }
+`);
+
 export default function Profile() {
   const userId = useUserId();
 
   useMutation(upsertProfile);
+  useMutation(upsertProfile2);
 
   return (
     <>
-      <p>{userId}</p>
+      <p>{userId || "Signed Out"}</p>
     </>
   );
 }
