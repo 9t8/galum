@@ -28,7 +28,7 @@ export default function Navbar() {
         </SignedOut>
         <SignedIn>
           <li>
-            <a href="." role="button">
+            <a href="profile" role="button">
               My Profile
             </a>
           </li>
