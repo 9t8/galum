@@ -3,7 +3,7 @@
 import { useQuery } from "@apollo/client";
 import { ReactElement, useMemo } from "react";
 
-import { graphql } from "@/__generated__/gql";
+import { graphql } from "@/__generated__";
 
 const selectAlums = graphql(`
   query selectAlums {
