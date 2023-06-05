@@ -4,16 +4,11 @@ import { NhostClient, NhostProvider } from "@nhost/nextjs";
 import "@picocss/pico";
 
 import Navbar from "@/components/Navbar";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { NhostApolloProvider } from "@nhost/react-apollo";
 
 const nhost = new NhostClient({
   region: process.env.NEXT_PUBLIC_REGION,
   subdomain: process.env.NEXT_PUBLIC_SUBDOMAIN,
-});
-
-const apollo = new ApolloClient({
-  uri: nhost.graphql.httpUrl,
-  cache: new InMemoryCache(),
 });
 
 export default function RootLayout({
@@ -25,10 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NhostProvider nhost={nhost}>
-          <ApolloProvider client={apollo}>
+          <NhostApolloProvider nhost={nhost}>
             <Navbar />
             <main className="container">{children}</main>
-          </ApolloProvider>
+          </NhostApolloProvider>
         </NhostProvider>
       </body>
     </html>
