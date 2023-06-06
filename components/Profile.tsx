@@ -25,14 +25,7 @@ export default function Profile() {
 
   const [editing, setEditing] = useState(false);
 
-  useEffect(
-    () =>
-      setBio(
-        data?.profiles[0].bio ??
-          'akdfj;asldkfja\n\naskdjf;alsdkj                                                                                                                                                                                                                                                                                                                                                                                                                                                       \n\n<a href="example.com"></a>'
-      ),
-    [data?.profiles]
-  );
+  useEffect(() => setBio(data?.profiles[0].bio ?? ""), [data?.profiles]);
 
   if (params.get("id") === null) {
     return <h2>Missing User ID</h2>;
