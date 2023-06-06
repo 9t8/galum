@@ -26,6 +26,7 @@ export default function SignIn() {
 
   const handleOnSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
     await signInEmailPassword(email, password);
   };
 
@@ -37,7 +38,7 @@ export default function SignIn() {
     <form onSubmit={handleOnSubmit}>
       <input
         type="email"
-        placeholder="Email address"
+        placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         disabled={disableForm}
@@ -53,7 +54,7 @@ export default function SignIn() {
       />
 
       <button type="submit" disabled={disableForm} aria-busy={isLoading}>
-        Sign in
+        Sign In
       </button>
 
       {error && <p>{error.message}</p>}

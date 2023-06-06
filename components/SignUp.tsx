@@ -38,7 +38,7 @@ export default function SignUp() {
     <form onSubmit={handleOnSubmit}>
       <input
         type="email"
-        placeholder="Email address"
+        placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         disabled={disableForm}
@@ -46,7 +46,7 @@ export default function SignUp() {
       />
       <input
         type="password"
-        placeholder="Create password"
+        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         disabled={disableForm}
@@ -54,7 +54,7 @@ export default function SignUp() {
       />
 
       <button type="submit" disabled={disableForm} aria-busy={isLoading}>
-        Create account
+        Create Account
       </button>
 
       {error && <p>{error.message}</p>}
