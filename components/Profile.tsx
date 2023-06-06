@@ -32,7 +32,7 @@ export default function Profile() {
   useEffect(() => setBio(data?.profiles[0].bio ?? ""), [data?.profiles]);
 
   if (params.get("id") === null) {
-    return <h2>Missing User ID</h2>;
+    return <h3>Missing User ID</h3>;
   }
 
   return editing ? (
