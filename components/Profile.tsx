@@ -1,20 +1,25 @@
 "use client";
 
 import { useUserData } from "@nhost/nextjs";
+import { useEffect, useState } from "react";
 
 export default function Profile() {
-  // use this because i can not fucking figure out the other way
   const userData = useUserData();
+
+  const [bio, setBio] = useState("");
+
+  useEffect(
+    () => setBio("" + userData?.metadata.bio),
+    [userData?.metadata.bio]
+  );
 
   if (!userData) {
     return <p>Sign in to edit your profile.</p>;
   }
 
-  console.log(userData);
-
   return (
     <>
-      <p>{userData.id}</p>
+      <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
     </>
   );
 }
