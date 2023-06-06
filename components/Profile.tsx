@@ -7,18 +7,19 @@ import { useQuery } from "@apollo/client";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const selectBio = graphql(`
-  query selectBio($id: uuid!) {
-    profiles(where: { user_id: { _eq: $id } }) {
-      bio
-    }
-  }
-`);
-
 export default function Profile() {
   const params = useSearchParams();
 
-  const { data } = useQuery(selectBio, { variables: { id: params.get("id") } });
+  const { data } = useQuery(
+    graphql(`
+      query selectBio($id: uuid!) {
+        profiles(where: { user_id: { _eq: $id } }) {
+          bio
+        }
+      }
+    `),
+    { variables: { id: params.get("id") } }
+  );
 
   const [bio, setBio] = useState("");
 

@@ -5,21 +5,21 @@ import { ReactElement, useMemo } from "react";
 
 import { graphql } from "@/__generated__";
 
-const selectAlums = graphql(`
-  query selectAlums {
-    people(
-      where: { grad_year: { _is_null: false } }
-      order_by: [{ last_name: asc }, { first_name: asc }]
-    ) {
-      first_name
-      last_name
-      grad_year
-    }
-  }
-`);
-
 export default function AlumList() {
-  const { data } = useQuery(selectAlums);
+  const { data } = useQuery(
+    graphql(`
+      query selectAlums {
+        people(
+          where: { grad_year: { _is_null: false } }
+          order_by: [{ last_name: asc }, { first_name: asc }]
+        ) {
+          first_name
+          last_name
+          grad_year
+        }
+      }
+    `)
+  );
 
   const alums = useMemo(
     () =>
