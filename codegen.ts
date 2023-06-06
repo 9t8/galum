@@ -10,7 +10,7 @@ const config: CodegenConfig = {
       },
     },
   },
-  documents: ["components/*.tsx", "lib/*.ts"],
+  documents: "components/*.tsx",
   generates: {
     "__generated__/": {
       preset: "client",
