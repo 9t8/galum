@@ -53,8 +53,8 @@ export default function SignUp() {
         required
       />
 
-      <button type="submit" disabled={disableForm}>
-        {isLoading ? <progress /> : "Create account"}
+      <button type="submit" disabled={disableForm} aria-busy={isLoading}>
+        Create account
       </button>
 
       {error && <p>{error.message}</p>}

@@ -52,8 +52,8 @@ export default function SignIn() {
         required
       />
 
-      <button type="submit" disabled={disableForm}>
-        {isLoading ? <progress /> : "Sign in"}
+      <button type="submit" disabled={disableForm} aria-busy={isLoading}>
+        Sign in
       </button>
 
       {error && <p>{error.message}</p>}
