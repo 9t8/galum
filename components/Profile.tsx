@@ -23,15 +23,24 @@ export default function Profile() {
 
   const [bio, setBio] = useState("");
 
-  useEffect(() => setBio(data?.profiles[0].bio ?? ""), [data?.profiles]);
+  const [editing, setEditing] = useState(false);
+
+  useEffect(
+    () =>
+      setBio(
+        data?.profiles[0].bio ??
+          'akdfj;asldkfja\n\naskdjf;alsdkj                                                                                                                                                                                                                                                                                                                                                                                                                                                       \n\n<a href="example.com"></a>'
+      ),
+    [data?.profiles]
+  );
 
   if (params.get("id") === null) {
     return <h2>Missing User ID</h2>;
   }
 
-  return (
-    <>
-      <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
-    </>
+  return editing ? (
+    <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
+  ) : (
+    <div style={{ whiteSpace: "break-spaces" }}>{bio}</div>
   );
 }
