@@ -1,7 +1,9 @@
-import { SignedIn, SignedOut, useSignOut } from "@nhost/nextjs";
+import { SignedIn, SignedOut, useSignOut, useUserId } from "@nhost/nextjs";
 
 export default function Navbar() {
   const { signOut } = useSignOut();
+
+  const id = useUserId();
 
   return (
     <nav className="container">
@@ -16,6 +18,18 @@ export default function Navbar() {
         </li>
       </ul>
       <ul>
+        <SignedIn>
+          <li>
+            <a href={`profile?id=${id}`} role="button">
+              My Profile
+            </a>
+          </li>
+          <li>
+            <a href="" onClick={signOut}>
+              Sign Out
+            </a>
+          </li>
+        </SignedIn>
         <SignedOut>
           <li>
             <a href="sign-in">Sign In</a>
@@ -26,14 +40,6 @@ export default function Navbar() {
             </a>
           </li>
         </SignedOut>
-        <SignedIn>
-          <li>
-            <a href="profile" role="button">
-              My Profile
-            </a>
-          </li>
-          <li onClick={signOut}>Sign Out</li>
-        </SignedIn>
       </ul>
     </nav>
   );

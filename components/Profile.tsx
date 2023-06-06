@@ -1,9 +1,11 @@
 "use client";
 
 //TODO: make sure signing out does not break this page, othrwise redirect to homepage on sign-out
+// also actually save work lol
 
 import { graphql } from "@/__generated__";
 import { useQuery } from "@apollo/client";
+import { useUserId } from "@nhost/nextjs";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -25,6 +27,8 @@ export default function Profile() {
 
   const [editing, setEditing] = useState(false);
 
+  const id = useUserId();
+
   useEffect(() => setBio(data?.profiles[0].bio ?? ""), [data?.profiles]);
 
   if (params.get("id") === null) {
@@ -32,8 +36,18 @@ export default function Profile() {
   }
 
   return editing ? (
-    <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
+    <>
+      <textarea value={bio} onChange={(e) => setBio(e.target.value)} />{" "}
+      <button onClick={() => setEditing(false)}>Save</button>
+    </>
   ) : (
-    <div style={{ whiteSpace: "break-spaces" }}>{bio}</div>
+    <>
+      <p style={{ whiteSpace: "break-spaces" }}>{bio}</p>
+      {id === params.get("id") && (
+        <span role="button" onClick={() => setEditing(true)}>
+          Edit
+        </span>
+      )}
+    </>
   );
 }
