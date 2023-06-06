@@ -4,7 +4,7 @@
 // also actually save work lol
 
 import { graphql } from "@/__generated__";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useUserId } from "@nhost/nextjs";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -14,7 +14,7 @@ export default function Profile() {
 
   const { data } = useQuery(
     graphql(`
-      query selectBio($id: uuid!) {
+      query selectProfile($id: uuid!) {
         profiles(where: { user_id: { _eq: $id } }) {
           bio
         }
@@ -23,22 +23,41 @@ export default function Profile() {
     { variables: { id: params.get("id") } }
   );
 
+  const [upsertProfile] = useMutation(
+    graphql(`
+      mutation upsertProfile($bio: String!) {
+        insert_profiles(
+          objects: { bio: $bio }
+          on_conflict: { constraint: profiles_pkey, update_columns: [bio] }
+        ) {
+          affected_rows
+        }
+      }
+    `)
+  );
+
   const [bio, setBio] = useState("");
 
   const [editing, setEditing] = useState(false);
 
   const id = useUserId();
 
-  useEffect(() => setBio(data?.profiles[0].bio ?? ""), [data?.profiles]);
+  useEffect(() => setBio(data?.profiles[0]?.bio ?? ""), [data?.profiles]);
 
   if (params.get("id") === null) {
     return <h3>Missing User ID</h3>;
   }
 
+  const saveProfile = () => {
+    upsertProfile({ variables: { bio } });
+
+    setEditing(false);
+  };
+
   return editing ? (
     <>
       <textarea value={bio} onChange={(e) => setBio(e.target.value)} />{" "}
-      <button onClick={() => setEditing(false)}>Save</button>
+      <button onClick={saveProfile}>Save</button>
     </>
   ) : (
     <>
