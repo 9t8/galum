@@ -45,8 +45,7 @@ export default function Profile() {
   const id = useUserId();
 
   useEffect(
-    () =>
-      setBio(data?.profiles[0]?.bio ?? "Hi! I have not changed my bio yet."),
+    () => setBio(data?.profiles[0]?.bio ?? "Hi! I have not set my bio yet."),
     [data?.profiles]
   );
 
@@ -93,7 +92,7 @@ export default function Profile() {
         </>
       ) : (
         <>
-          <p style={{ whiteSpace: "break-spaces" }}>{bio}</p>
+          {bio && <p style={{ whiteSpace: "break-spaces" }}>{bio}</p>}
           {id === params.get("id") && (
             <>
               <hr />
