@@ -62,8 +62,8 @@ export default function Profile() {
     setEditing(true);
   };
 
-  const saveProfile = () => {
-    upsertProfile({ variables: { bio } });
+  const saveProfile = async () => {
+    await upsertProfile({ variables: { bio } });
 
     setEditing(false);
   };

@@ -29,9 +29,9 @@ export default function Navbar() {
             <a
               onClick={async (e) => {
                 e.preventDefault();
-                if ((await signOut()).isSuccess) {
-                  router.push("");
-                }
+
+                await signOut();
+                router.push("");
               }}
               href=""
               className="secondary"
