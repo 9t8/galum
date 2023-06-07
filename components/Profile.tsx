@@ -46,12 +46,8 @@ export default function Profile() {
 
   useEffect(
     () =>
-      setBio(
-        data
-          ? data.profiles[0]?.bio ?? "Hi! I have not changed my bio yet."
-          : "Loading..."
-      ),
-    [data]
+      setBio(data?.profiles[0]?.bio ?? "Hi! I have not changed my bio yet."),
+    [data?.profiles]
   );
 
   if (!params.get("id")) {
@@ -77,28 +73,34 @@ export default function Profile() {
   return (
     <>
       {data.people[0] ? (
-        <>
+        <hgroup>
           <h3>{`${data.people[0].first_name} ${data.people[0].last_name}`}</h3>
           {data.people[0].grad_year && (
-            <p>{`Class of ${data.people[0].grad_year}.`}</p>
+            <p>{`Class of ${data.people[0].grad_year}`}</p>
           )}
-        </>
+        </hgroup>
       ) : (
         <h3>Unverified User</h3>
       )}
-      <h4>Bio</h4>
       {editing ? (
         <>
-          <textarea value={bio} onChange={(e) => setBio(e.target.value)} />{" "}
+          <textarea
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            placeholder="Bio"
+          />
           <button onClick={saveProfile}>Save</button>
         </>
       ) : (
         <>
           <p style={{ whiteSpace: "break-spaces" }}>{bio}</p>
           {id === params.get("id") && (
-            <span role="button" onClick={startEditing}>
-              Edit
-            </span>
+            <>
+              <hr />
+              <span role="button" onClick={startEditing}>
+                Edit Profile
+              </span>
+            </>
           )}
         </>
       )}
