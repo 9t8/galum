@@ -48,7 +48,7 @@ export default function Profile() {
     () =>
       setBio(
         data
-          ? data.profiles[0]?.bio || "Hi! I have not changed my bio yet."
+          ? data.profiles[0]?.bio ?? "Hi! I have not changed my bio yet."
           : "Loading..."
       ),
     [data]
