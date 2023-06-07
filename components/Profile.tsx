@@ -79,7 +79,7 @@ export default function Profile() {
           )}
         </hgroup>
       ) : (
-        <h3>Unverified User</h3>
+        <h3>Unconnected User</h3>
       )}
       {editing ? (
         <>
