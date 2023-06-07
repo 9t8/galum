@@ -54,7 +54,7 @@ export default function Profile() {
   }
 
   if (data === undefined) {
-    return <h3>Loading...</h3>;
+    return <h3 aria-busy>Loading...</h3>;
   }
 
   const startEditing = () => {
