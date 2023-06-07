@@ -1,8 +1,5 @@
 "use client";
 
-//TODO: make sure signing out does not break this page, othrwise redirect to homepage on sign-out
-// also actually save work lol
-
 import { graphql } from "@/__generated__";
 import { useMutation, useQuery } from "@apollo/client";
 import { useUserId } from "@nhost/nextjs";
