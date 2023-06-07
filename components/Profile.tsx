@@ -15,6 +15,11 @@ export default function Profile() {
         profiles(where: { user_id: { _eq: $id } }) {
           bio
         }
+        people(where: { user_id: { _eq: $id } }) {
+          first_name
+          last_name
+          grad_year
+        }
       }
     `),
     { variables: { id: params.get("id") } }
@@ -49,8 +54,12 @@ export default function Profile() {
     [data]
   );
 
-  if (params.get("id") === null) {
+  if (!params.get("id")) {
     return <h3>Missing User ID</h3>;
+  }
+
+  if (data === undefined) {
+    return <h3>Loading...</h3>;
   }
 
   const startEditing = () => {
@@ -67,6 +76,16 @@ export default function Profile() {
 
   return (
     <>
+      {data.people[0] ? (
+        <>
+          <h3>{data.people[0].first_name + " " + data.people[0].last_name}</h3>
+          {data.people[0].grad_year && (
+            <p>{`Class of ${data.people[0].grad_year}.`}</p>
+          )}
+        </>
+      ) : (
+        <h3>Unverified User</h3>
+      )}
       <h4>Bio</h4>
       {editing ? (
         <>
@@ -76,7 +95,7 @@ export default function Profile() {
       ) : (
         <>
           <p style={{ whiteSpace: "break-spaces" }}>{bio}</p>
-          {data && id === params.get("id") && (
+          {id === params.get("id") && (
             <span role="button" onClick={startEditing}>
               Edit
             </span>
