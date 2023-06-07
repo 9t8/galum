@@ -42,11 +42,25 @@ export default function Profile() {
 
   const id = useUserId();
 
-  useEffect(() => setBio(data?.profiles[0]?.bio ?? ""), [data?.profiles]);
+  useEffect(
+    () =>
+      setBio(
+        data
+          ? data.profiles[0]?.bio || "Hi! I have not changed my bio yet."
+          : "Loading..."
+      ),
+    [data]
+  );
 
   if (params.get("id") === null) {
     return <h3>Missing User ID</h3>;
   }
+
+  const startEditing = () => {
+    setBio(data?.profiles[0]?.bio ?? "");
+
+    setEditing(true);
+  };
 
   const saveProfile = () => {
     upsertProfile({ variables: { bio } });
@@ -54,18 +68,23 @@ export default function Profile() {
     setEditing(false);
   };
 
-  return editing ? (
+  return (
     <>
-      <textarea value={bio} onChange={(e) => setBio(e.target.value)} />{" "}
-      <button onClick={saveProfile}>Save</button>
-    </>
-  ) : (
-    <>
-      <p style={{ whiteSpace: "break-spaces" }}>{bio}</p>
-      {id === params.get("id") && (
-        <span role="button" onClick={() => setEditing(true)}>
-          Edit
-        </span>
+      <h4>Bio</h4>
+      {editing ? (
+        <>
+          <textarea value={bio} onChange={(e) => setBio(e.target.value)} />{" "}
+          <button onClick={saveProfile}>Save</button>
+        </>
+      ) : (
+        <>
+          <p style={{ whiteSpace: "break-spaces" }}>{bio}</p>
+          {data && id === params.get("id") && (
+            <span role="button" onClick={startEditing}>
+              Edit
+            </span>
+          )}
+        </>
       )}
     </>
   );
