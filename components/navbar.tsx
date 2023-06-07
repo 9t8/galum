@@ -1,7 +1,10 @@
 import { SignedIn, SignedOut, useSignOut, useUserId } from "@nhost/nextjs";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const { signOut } = useSignOut();
+
+  const router = useRouter();
 
   const id = useUserId();
 
@@ -20,12 +23,19 @@ export default function Navbar() {
       <ul>
         <SignedIn>
           <li>
-            <a href={`profile?id=${id}`} role="button">
-              My Profile
-            </a>
+            <a href={`profile?id=${id}`}>My Profile</a>
           </li>
           <li>
-            <a href="" onClick={signOut}>
+            <a
+              onClick={async (e) => {
+                e.preventDefault();
+                if ((await signOut()).isSuccess) {
+                  router.push("");
+                }
+              }}
+              href=""
+              className="secondary"
+            >
               Sign Out
             </a>
           </li>
