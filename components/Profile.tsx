@@ -78,7 +78,7 @@ export default function Profile() {
     <>
       {data.people[0] ? (
         <>
-          <h3>{data.people[0].first_name + " " + data.people[0].last_name}</h3>
+          <h3>{`${data.people[0].first_name} ${data.people[0].last_name}`}</h3>
           {data.people[0].grad_year && (
             <p>{`Class of ${data.people[0].grad_year}.`}</p>
           )}

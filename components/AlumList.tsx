@@ -55,10 +55,10 @@ export default function AlumList() {
                 <li key={i}>
                   {person.user_id ? (
                     <a href={`profile?id=${person.user_id}`}>
-                      {person.first_name + " " + person.last_name}
+                      {`${person.first_name} ${person.last_name}`}
                     </a>
                   ) : (
-                    person.first_name + " " + person.last_name
+                    `${person.first_name} ${person.last_name}`
                   )}
                 </li>
               ))}
