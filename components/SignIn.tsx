@@ -24,7 +24,7 @@ export default function SignIn() {
     }
   }, [isSuccess, router]);
 
-  const handleOnSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     await signInEmailPassword(email, password);
@@ -35,7 +35,7 @@ export default function SignIn() {
   return needsEmailVerification ? (
     <p>Please check your email and follow the verification link.</p>
   ) : (
-    <form onSubmit={handleOnSubmit}>
+    <form onSubmit={handleSubmit}>
       <input
         type="email"
         placeholder="Email"
