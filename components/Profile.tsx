@@ -92,15 +92,21 @@ export default function Profile() {
         </>
       ) : (
         <>
-          {bio && <p style={{ whiteSpace: "break-spaces" }}>{bio}</p>}
           {id === params.get("id") && (
-            <>
-              <hr />
+            <p>
+              {!data.people[0] && (
+                <>
+                  <a role="button" className="contrast" href="connect">
+                    Connect Account
+                  </a>{" "}
+                </>
+              )}
               <span role="button" onClick={startEditing}>
                 Edit Profile
               </span>
-            </>
+            </p>
           )}
+          {bio && <p style={{ whiteSpace: "break-spaces" }}>{bio}</p>}
         </>
       )}
     </>
