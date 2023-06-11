@@ -16,7 +16,7 @@ export default function Navbar() {
         </li>
         <li>
           <a href="alums" className="secondary">
-            List of Alumni
+            Alumni List
           </a>
         </li>
       </ul>
