@@ -4,11 +4,12 @@ import { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
   schema: {
-    "https://qndsufruxlffqeirkxqm.graphql.us-east-1.nhost.run/v1": {
-      headers: {
-        "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET!,
+    [`https://${process.env.NEXT_PUBLIC_NHOST_SUBDOMAIN}.graphql.${process.env.NEXT_PUBLIC_NHOST_REGION}.nhost.run/v1`]:
+      {
+        headers: {
+          "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET!,
+        },
       },
-    },
   },
   documents: "components/*.tsx",
   generates: {
