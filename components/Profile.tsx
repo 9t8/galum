@@ -54,10 +54,6 @@ export default function Profile() {
     return <h3 aria-busy>Loading...</h3>;
   }
 
-  const startEditing = () => {
-    setEditing(true);
-  };
-
   const saveProfile = async () => {
     setSaving(true);
 
@@ -102,7 +98,7 @@ export default function Profile() {
                   </a>{" "}
                 </>
               )}
-              <span role="button" onClick={startEditing}>
+              <span role="button" onClick={() => setEditing(true)}>
                 Edit Profile
               </span>
             </p>
