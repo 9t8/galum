@@ -37,6 +37,7 @@ export default function Connect() {
           setLoading(false);
         }}
         disabled={loading}
+        aria-busy={loading}
       >
         Send
       </button>
