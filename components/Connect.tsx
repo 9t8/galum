@@ -20,6 +20,8 @@ export default function Connect() {
         required
       />
       <button
+        disabled={loading}
+        aria-busy={loading}
         onClick={async () => {
           setLoading(true);
 
@@ -36,8 +38,6 @@ export default function Connect() {
 
           setLoading(false);
         }}
-        disabled={loading}
-        aria-busy={loading}
       >
         Send
       </button>
