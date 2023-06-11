@@ -9,7 +9,7 @@ export default function Navbar() {
   const id = useUserId();
 
   return (
-    <nav className="container">
+    <nav className="container-fluid">
       <ul>
         <li>
           <a href=".">Gunn Alumni</a>
