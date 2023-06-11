@@ -40,13 +40,11 @@ export default function Profile() {
 
   const [bio, setBio] = useState("");
   const [editing, setEditing] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   const id = useUserId();
 
-  useEffect(
-    () => setBio(data?.profiles[0]?.bio ?? "Hi! I have not set my bio yet."),
-    [data?.profiles]
-  );
+  useEffect(() => setBio(data?.profiles[0]?.bio ?? ""), [data?.profiles]);
 
   if (!params?.get("id")) {
     return <h3>Missing User ID</h3>;
@@ -57,14 +55,15 @@ export default function Profile() {
   }
 
   const startEditing = () => {
-    setBio(data?.profiles[0]?.bio ?? "");
-
     setEditing(true);
   };
 
   const saveProfile = async () => {
+    setSaving(true);
+
     await upsertProfile({ variables: { bio } });
 
+    setSaving(false);
     setEditing(false);
   };
 
@@ -86,8 +85,11 @@ export default function Profile() {
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             placeholder="Bio"
+            disabled={saving}
           />
-          <button onClick={saveProfile}>Save</button>
+          <button onClick={saveProfile} disabled={saving} aria-busy={saving}>
+            Save
+          </button>
         </>
       ) : (
         <>
