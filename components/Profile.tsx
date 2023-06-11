@@ -22,7 +22,7 @@ export default function Profile() {
         }
       }
     `),
-    { variables: { id: params.get("id") } }
+    { variables: { id: params?.get("id") } }
   );
 
   const [upsertProfile] = useMutation(
@@ -39,7 +39,6 @@ export default function Profile() {
   );
 
   const [bio, setBio] = useState("");
-
   const [editing, setEditing] = useState(false);
 
   const id = useUserId();
@@ -49,7 +48,7 @@ export default function Profile() {
     [data?.profiles]
   );
 
-  if (!params.get("id")) {
+  if (!params?.get("id")) {
     return <h3>Missing User ID</h3>;
   }
 
