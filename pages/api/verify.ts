@@ -8,15 +8,17 @@ export default async function handler(
   const db = createConnectionPool();
 
   try {
-    if (!req.query.id || !req.query.secret) {
-      return res.send("Error: missing query arguments(s).");
+    if (!req.query.id) {
+      return res.send("Error: missing id.");
     }
-
     const id = req.query.id + "";
     if (id.length !== 36) {
       return res.send("Error: invalid id.");
     }
 
+    if (!req.query.secret) {
+      return res.send("Error: missing secret.");
+    }
     const secret = req.query.secret + "";
     if (secret.length !== 344) {
       return res.send("Error: invalid secret.");

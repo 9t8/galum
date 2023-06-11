@@ -17,15 +17,17 @@ export default async function handler(
   });
 
   try {
-    if (!req.query.id || !req.query.to) {
-      return res.send("Error: missing query arguments(s).");
+    if (!req.query.id) {
+      return res.send("Error: missing id.");
     }
-
     const id = req.query.id + "";
     if (id.length !== 36) {
       return res.send("Error: invalid id.");
     }
 
+    if (!req.query.to) {
+      return res.send("Error: missing email.");
+    }
     const to = req.query.to + "";
 
     const [existingConnection] = await db.query(sql`
@@ -56,7 +58,7 @@ export default async function handler(
       ) as b
     `);
     if (!emails) {
-      return res.send("Error: user and/or person not found.");
+      return res.send("Error: user and/or email not found.");
     }
 
     const secret = randomBytes(258).toString("base64");
