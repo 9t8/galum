@@ -27,9 +27,6 @@ export default async function handler(
     }
 
     const to = req.query.to + "";
-    if (to.length > 255) {
-      return res.send("Error: target email exceeds length limit.");
-    }
 
     const [existingConnection] = await db.query(sql`
     SELECT user_id FROM people
