@@ -13,10 +13,7 @@ export default function Connect() {
 
   const handleSubmit = async () => {
     setLoading(true);
-    const a = await fetch(
-      `${process.env.NEXT_PUBLIC_NHOST_FUNCTIONS_URL}/send`,
-      { method: "POST" }
-    );
+    const a = await fetch("api/send", { method: "POST" });
     console.log(await a.text());
     setLoading(false);
   };
