@@ -41,7 +41,7 @@ export default async function handler(
       WHERE pausd_email = ${verifReq.pausd_email}
     `);
 
-    res.send("Success, your account is connected.");
+    res.send("Success: account connected.");
   } catch (e) {
     res.status(500).send("Error: internal server error.");
     console.error(e);

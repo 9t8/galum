@@ -97,7 +97,7 @@ export default async function handler(
       `,
     });
 
-    res.send("Success, check your inbox.");
+    res.send("Success: check your inbox.");
   } catch (e) {
     res.status(500).send("Error: internal server error.");
     console.error(e);
