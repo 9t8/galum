@@ -58,7 +58,7 @@ export default async function handler(
       ) as b
     `);
     if (!emails) {
-      return res.send("Error: user and/or email not found.");
+      return res.send("Error: user or email not found.");
     }
 
     const secret = randomBytes(258).toString("base64");
