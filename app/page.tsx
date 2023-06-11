@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <h1>Gunn Alumni Website</h1>
-      <p>This is the Gunn alumni website.</p>
+      <p>Welcome to the Gunn Alumni website.</p>
     </>
   );
 }
