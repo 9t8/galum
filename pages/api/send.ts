@@ -17,6 +17,7 @@ export default async function handler(
   });
 
   try {
+    // todo actually authorize the user
     if (!req.query.id) {
       return res.send("Error: missing id.");
     }
