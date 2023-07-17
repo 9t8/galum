@@ -5,6 +5,7 @@ import "@picocss/pico";
 
 import Navbar from "@/components/Navbar";
 import { NhostApolloProvider } from "@nhost/react-apollo";
+import Footer from "@/components/Footer";
 
 const nhost = new NhostClient({
   region: process.env.NEXT_PUBLIC_NHOST_REGION,
@@ -18,14 +19,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <NhostProvider nhost={nhost}>
-          <NhostApolloProvider nhost={nhost}>
+      <NhostProvider nhost={nhost}>
+        <NhostApolloProvider nhost={nhost}>
+          <body>
             <Navbar />
             <main className="container">{children}</main>
-          </NhostApolloProvider>
-        </NhostProvider>
-      </body>
+            <footer className="container">
+              <Footer />
+            </footer>
+          </body>
+        </NhostApolloProvider>
+      </NhostProvider>
     </html>
   );
 }
