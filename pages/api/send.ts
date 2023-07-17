@@ -27,7 +27,7 @@ export default async function handler(
     }
 
     if (!req.query.to) {
-      return res.send("Error: missing email.");
+      return res.send("Error: missing target email.");
     }
     const to = req.query.to + "";
 
