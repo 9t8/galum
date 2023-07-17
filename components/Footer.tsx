@@ -9,6 +9,7 @@ export default function Footer() {
             <a href="https://github.com/9t8/galum">
               https://github.com/9t8/galum
             </a>
+            .
           </li>
         </small>
       </ul>
