@@ -46,7 +46,6 @@ export default async function handler(
     res.status(500).send("Error: internal server error.");
     console.error(e);
   } finally {
-    // todo is this necessary?
     await db.dispose();
   }
 }

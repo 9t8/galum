@@ -17,7 +17,7 @@ export default async function handler(
   });
 
   try {
-    // todo actually authorize the user
+    // todo authorize the user
     if (!req.query.id) {
       return res.send("Error: missing id.");
     }
@@ -103,8 +103,9 @@ export default async function handler(
     res.status(500).send("Error: internal server error.");
     console.error(e);
   } finally {
-    // todo are these necessary?
+    // is this necessary?
     transporter.close();
+
     await db.dispose();
   }
 }
