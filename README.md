@@ -8,7 +8,7 @@ I am excited to never work with Nhost again.
 
 GraphQL needs more curly braces.
 
-There is totally not a security problem in `api/send`.
+There is not a security problem in `api/send`.
 
 ## `public` Schema
 
