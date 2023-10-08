@@ -2,13 +2,11 @@
 
 There is no error handling.
 
-I do not properly manage the Apollo cache since bad things (inconsistent errors) happen when I try.
+I do not properly manage the Apollo cache since inconsistent errors happen when I try.
 
-I am excited to never work with Nhost again.
+Nhost is kind of annoying to work with.
 
-GraphQL needs more curly braces.
-
-There is not a security problem in `api/send`.
+`api/send` needs to authorize the user.
 
 ## `public` Schema
 

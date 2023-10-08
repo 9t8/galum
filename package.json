@@ -10,24 +10,24 @@
     "codegen": "graphql-codegen"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.17",
+    "@apollo/client": "^3.8.5",
     "@databases/pg": "^5.4.1",
-    "@graphql-codegen/cli": "^4.0.1",
-    "@graphql-codegen/client-preset": "^4.0.1",
-    "@nhost/nextjs": "^1.13.34",
-    "@nhost/react-apollo": "^5.0.32",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@nhost/nextjs": "^1.13.38",
+    "@nhost/react-apollo": "^5.0.36",
     "@picocss/pico": "^1.5.10",
-    "@types/node": "^20.4.2",
-    "@types/nodemailer": "^6.4.8",
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
+    "@types/node": "^20.8.3",
+    "@types/nodemailer": "^6.4.11",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
     "dotenv": "^16.3.1",
-    "eslint": "^8.45.0",
-    "eslint-config-next": "^13.4.10",
-    "next": "^13.4.10",
-    "nodemailer": "^6.9.3",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^13.5.4",
+    "next": "^13.5.4",
+    "nodemailer": "^6.9.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   }
 }
